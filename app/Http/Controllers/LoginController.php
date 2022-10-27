@@ -52,17 +52,25 @@ class LoginController extends Controller
                 if($logindata["level"] == 1){
                     Session::put('user_id', $logindata["id"]);
                     Session::put('level', $logindata["level"]);
-                    return view('index'); 
+                    return view('index',[
+                        'isLogin' == true,
+                    ]);
                 }
                 elseif($logindata["level"] == 2){
                     Session::put('user_id', $logindata["id"]);
                     Session::put('level', $logindata["level"]);
-                    return view('index');
+                    return view('index',[
+                        'isLogin' == true,
+                    ]);
                 }
                 elseif($logindata["level"] == 3){
                     Session::put('user_id', $logindata["id"]);
                     Session::put('level', $logindata["level"]);
-                    return view('index');
+                    return view('index',[
+                        'isLogin' == true,
+                    ]);
+                    
+                        
                 }   
             }
             else{

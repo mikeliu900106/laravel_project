@@ -11,9 +11,27 @@ class ResumeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->session()->has('user_id')) {
+            if ($request->session()->get('level') == '1') {
+                $user_id = session()->get('user_id');
+                echo $user_id;
+                return view('IN.student.Resume.index',[
+                    'user_id'  => $user_id,
+                ]);
+            }
+            else{
+                echo "你不是學生";
+                //1. 顯示錯誤2.錯誤controller
+                
+
+            }
+        }
+        else{
+            echo "你沒登入";
+        }
+
     }
 
     /**

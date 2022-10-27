@@ -15,6 +15,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ResumeFileController;
+use App\Http\Controllers\MyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,9 +36,10 @@ Route::get('/app', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/email', [ApplyController::class,'email']);
 
 
-// Route::post('Login', 'LoginController@login');
+Route::get('email', 'ApplyController@email');
 Route::resource('Student',StudentController::class);
 Route::resource('Enter',EnterController::class);
 Route::resource('Teacher',TeacherController::class);
@@ -51,3 +54,5 @@ Route::resource('Error',ErrorController::class);
 Route::resource('Company',CompanyController::class);
 
 Route::resource('Login',LoginController::class);
+Route::resource('ResumeFile',ResumeFileController::class);
+Route::resource('My',MyController::class);

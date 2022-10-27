@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Student;
-
-class StudentController extends Controller
+class MyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-
-
-        return view('In.Student.index');
+        
     }
 
     /**
@@ -38,39 +34,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        
-        function get_student_id(){
-            $today = date("Ynj");
-            $nums = Student::count();
-            echo $nums;
-            $id = "U" . (($today * 10000) + ($nums + 1));
-            return $id;
-        }
-        $student_id = get_student_id();
-        $studentdata = $request -> validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-            'email' => 'required|email',
-        ]);
-        echo  $studentdata['username'];
-        echo  $studentdata['password'];
-        echo  $studentdata['email'];
-        $Student_username_isUse = Student::where('user_name',  $studentdata['username'])->count();
-        if($Student_username_isUse == 0){
-            $Student_insert = Student::create(
-                [
-                    'user_id'       =>  $student_id,
-                    'user_name'     =>  $studentdata['username'],
-                    'user_password' =>  $studentdata['password'],
-                    'user_email'    =>  $studentdata['email'],
-                    'user_level'         =>  "1",
-                ]
-            );
-        }
-        else{
-            //error
-        }
-        
+        //
     }
 
     /**

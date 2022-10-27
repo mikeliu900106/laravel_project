@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Models\Vacancies;
 
+use App\Models\Company;
+
 use Session;
+
+use DB;
 
 class ApplyController extends Controller
 {
@@ -18,7 +22,7 @@ class ApplyController extends Controller
     public function index(Request $request)
     {   
         if ($request->session()->has('user_id')) {
-            if ($request->session()->has('level')) {
+            if ($request->session()->get('level') == '1') {
                 $user_id = session()->get('user_id');
                 $Vacancies = Vacancies::get();
                 echo $user_id;
@@ -69,9 +73,18 @@ class ApplyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id ,Request $request)
     {
-        //
+        // $Vacancies = DB::table('vacancies')
+        // ->join('company','company.company_id','=','vacancies.company_id')
+        // ->select('vacancies.*','company.*')
+        // ->get();
+        // echo  $Vacancies;
+        // return view("iN.Student.Apply.show",
+        // [
+        //     'Vacancies'=>$Vacancies,
+        // ]
+        // );
     }
 
     /**
@@ -82,7 +95,7 @@ class ApplyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Vacancies = Vacancies::where('')->get();
     }
 
     /**
@@ -104,6 +117,10 @@ class ApplyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+    public function email($id)
     {
         //
     }
